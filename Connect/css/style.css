@@ -1,0 +1,39 @@
+html {
+  color: white;
+  font-family: arial;
+}
+
+h2 {
+  color: gold;
+  text-align: center;
+  font-size: 50px;
+}
+
+table {
+  margin: 0 auto;
+  border-radius:10px;
+  border-spacing: 10px;
+}
+td {
+  border: 5px solid gold;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border-radius: 55px;
+  background-color: white; 
+  padding: -10px;
+}
+
+td:hover{
+  cursor:pointer;
+}
+
+[data-piece='red'] {
+  background-color: red;
+  opacity: 0.7;
+}
+
+[data-piece='blue'] {
+  background-color: blue;
+  opacity: 0.7;
+}
