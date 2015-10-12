@@ -28,12 +28,12 @@ td:hover{
   cursor:pointer;
 }
 
-[data-piece='red'] {
+[data-piece='red'], .red {
   background-color: red;
   opacity: 0.7;
 }
 
-[data-piece='blue'] {
+[data-piece='blue'], .blue {
   background-color: blue;
   opacity: 0.7;
 }
