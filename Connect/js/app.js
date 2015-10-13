@@ -1,61 +1,128 @@
-window.onload = function() {
+window.onload = function() { 
 
   var columns = [[],[],[],[],[],[]];
-  var player = "red";
+  var player = "blue";
+  var buttons = document.getElementsByTagName("button")
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", takeTurn)
+  };
+
+  var testColumns = [
+    ["red", "blue", "blue", "blue"],
+    ["blue", "red", "blue", "blue"],
+    ["blue", "blue", "red", "blue"],
+    ["blue", "blue", "blue", "red"],
+    []
+  ];
+
+  checkDiagonal();
 
   function takeTurn() {
-    var chuteIndex = parseInt(prompt("choose chute"));
+    // var chuteIndex = parseInt(prompt("choose chute"));
+    var chuteIndex = this.getAttribute("id");
+    console.log(chuteIndex)
     var chuteLength = columns[chuteIndex].push(player);
     var row = $("tr").toArray().reverse()[chuteLength-1];
+    //the array needs to be transformed into a jquery object, reversed and decremented (rather than incremented) in order to get the pieces to move up the column from the bottom
     var cell = $(row).find("td")[chuteIndex];
     $(cell).addClass(player);
+     //now we change the player
+     checkWin();
 
-    //now we change the player
-    player = (player == "red") ? "blue" : "red";
+     player = (player == "red") ? "blue" : "red";
+   }
+
+   function checkColumn(){
+    //first we check columns
+    sameColorSuite = 1;
+    
+    for(var i = 0; i < 5; i++){
+      for(var j = 0; j < 5; j++){
+        var currentCell = columns[i][j];
+        
+        if(currentCell === player){
+          if(sameColorSuite >= 4){
+            return true;
+          }
+          sameColorSuite++;
+        }
+      }
+      sameColorSuite = 1;
+    }
+    return false;
+
+  }
+  function checkRow(){
+    sameColorSuite = 1;
+    for(var i = 0; i < 5; i++){
+      for(var j = 0; j < 5; j++){
+        var currentCell = columns[j][i];
+        
+        if(currentCell === player){
+          if(sameColorSuite >= 4){
+            return true;
+          }
+          sameColorSuite++;
+        }
+      }
+      sameColorSuite = 1;
+    }
+    return false;
   }
 
+  function checkDiagonal(){
+    // redCheck = 0;
+    // blueCheck = 0;
+    // sameColorSuite = 1;
+    // for (var i =0 ; i < 5 ; i++){
+    //   // for (var j=4; j>=0; j--){
+    //     // console.log(i,j)
+    //     var currentCell = testColumns[i][i];
+    //     if(currentCell === player) { sameColorSuite++; }
+    //     else { sameColorSuite = 1; }
 
-  $("#chooseChute").on("click", takeTurn)
+    //     console.log(player + " " + sameColorSuite);
+    //   // }
+    // }
+    return false;
+    // console.log("sameColorSuite for player "+ player, sameColorSuite)
+    // if(currentCell === player){
+    //   if(sameColorSuite >= 4){
+    //     return true;
+    //   }
+    //   sameColorSuite++;
+    // }
+  }
+
+    function checkWin() {
+      console.log("checkRow", checkRow());
+      console.log("checkColumn", checkColumn());
+      console.log("checkDiagonal", checkDiagonal());
+
+      if(checkColumn() || checkRow() || checkDiagonal()) {
+        prompt("Winner: " + player);
+      }
+      return checkColumn() || checkRow()  || checkDiagonal();
+    }
+
+    $("#chooseChute").on("click", takeTurn);
 
 }
+// function addResetListener(){
+//   console.log("clear");
+//    document.getElementById("reset").addEventListener("click", resetBoard);
+//     }
+    
+ // function resetBoard(){
+ //  console.log("clear");
+ //   // Looping through all boxes and removing the HTML and css class
+    // for(var i = columns.length -1; i >= 0; i--){
+    //   columns[i].innerHTML = "";
+    //   columns[i].setAttribute("class", "clear");
+    //  }
 
-
-
-
-
-//else if class="red"
-
-//need to set the cell to null once it's been filled
-
-
-//$("td").each(takeTurn(){
-//$(this).find('td').each(takeTurn(){
-// when the user picks a chute, you need to check which cell in this chute is available
-// starting from the bottom
-
- //iterate through cells
-//cells would be accessed using the "cell" variable assigned in the for loop
-
-//var colorCell = $("td[data-col=0][data-row=0]");
-//colorCell.attr("data-piece", "red");
-
-//$("td").each(takeTurn(){
-//$(this).find('td').each(takeTurn(){
-        //do your stuff, you can use $(this) to get current cell
-    //})
-  //})
-
-// loop through the col the user entered, and find the first empty slot
-// i.e. the first cell with "empty" as the "data-piece" attribute value
-// then set that attr to red/blue whatever
-
-
-//var colorCell = $("td[data-col][data-row]");
-//colorCell.attr("data-piece", "player");
-
-//var colorCell = player;
-
-//find row and column that's just been played and change it to the colour of the player
+  // resetBoard();
 
 
 
@@ -63,49 +130,6 @@ window.onload = function() {
 
 
 
-//var colorCell = document.getElementById("data-piece").innerHTML = "red";
-//columns[0].length $("red").attr("data-piece", "red");
-//var cellOne = $("html").find("[data-col='0'][data-row='0']")[0];
-//<td data-col="0" data-row="0" data-piece="empty"></td>
-
-//document.getElementById("data-col=1").push;
-
-/*
-// find (array of) elements with attribute data-col = 0
-$("html").find("[data-col='0']")
-
-// first element in that array -it'll be a dom object, not jquery
-var cellOne = $("html").find("[data-col='0']")[0];
-var cellOneAsJquery = $(cellOne);
-
-// then stuff like this will work to make the piece red
-cellOneAsJquery.attr("data-piece", "red");
-
-// to get out the attribute value
-cellOneAsJquery.attr("data-piece")
-
-// to get out a specific cell, need both col and row defined
-var cellOne = $("html").find("[data-col='0'][data-row='0']")[0];
-*/
-
-// var col = prompt("What col?");
-// var col = "3"
-//so you're checking the same one -- so it's not always empty
-
-
-//using variables to store each column's value
-
-// var col0 = [];
-// var col1 = [];
-// var col2 = [];
-// var col3 = [];
-// var col4 = [];
-// var col5 = [];
-
-//set up as an array
-// col1 = [{ player: 1}, {player: 2}];
-// col1[0] --> {player:1};
-// .push() .pop() .shift() .unshift()
 
 
 
