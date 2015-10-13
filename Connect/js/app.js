@@ -1,30 +1,29 @@
 window.onload = function() {
 
-var columns = [[],[],[],[],[],[]];
-var player = "red";
+  var columns = [[],[],[],[],[],[]];
+  var player = "red";
 
-function takeTurn() {
-  var chuteIndex = parseInt(prompt("choose chute"));
-  columns[chuteIndex][25] = player; 
-  //for the moment we just fill the bottom row
-  var rows = $("tr").last();
-  var cell = rows.find("td")[chuteIndex];
-  $(cell).addClass(player);
-  //now we change the player
-  player = (player == "red") ? "blue" : "red";
-}
+  function takeTurn() {
+    var chuteIndex = parseInt(prompt("choose chute"));
+    var chuteLength = columns[chuteIndex].push(player);
+    var row = $("tr").toArray().reverse()[chuteLength-1];
+    var cell = $(row).find("td")[chuteIndex];
+    $(cell).addClass(player);
 
-function getAvailableCellForChute(chute){
-    var table = document.getElementById("td");
-    for (var i = 30; i > -1; i--) {
-      console.log(i);
-     if (cell = "empty") 
-     //else (cell = "null") {
-  $("#chooseChute").on("click", takeTurn);
+    //now we change the player
+    player = (player == "red") ? "blue" : "red";
   }
- }
-  getAvailableCellForChute()
+
+
+  $("#chooseChute").on("click", takeTurn)
+
 }
+
+
+
+
+
+//else if class="red"
 
 //need to set the cell to null once it's been filled
 
