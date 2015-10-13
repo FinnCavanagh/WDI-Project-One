@@ -8,15 +8,15 @@ window.onload = function() {
     buttons[i].addEventListener("click", takeTurn)
   };
 
-  var testColumns = [
-    ["red", "blue", "blue", "blue"],
-    ["blue", "red", "blue", "blue"],
-    ["blue", "blue", "red", "blue"],
-    ["blue", "blue", "blue", "red"],
-    []
-  ];
+  // var testColumns = [
+  //   ["red", "blue", "blue", "blue"],
+  //   ["blue", "red", "blue", "blue"],
+  //   ["blue", "blue", "red", "blue"],
+  //   ["blue", "blue", "blue", "red"],
+  //   []
+  // ];
 
-  checkDiagonal();
+  // checkDiagonal();
 
   function takeTurn() {
     // var chuteIndex = parseInt(prompt("choose chute"));
@@ -101,7 +101,7 @@ window.onload = function() {
       console.log("checkDiagonal", checkDiagonal());
 
       if(checkColumn() || checkRow() || checkDiagonal()) {
-        prompt("Winner: " + player);
+        alert("Yeah! " + player + " is the Chute master");
       }
       return checkColumn() || checkRow()  || checkDiagonal();
     }
@@ -109,22 +109,6 @@ window.onload = function() {
     $("#chooseChute").on("click", takeTurn);
 
 }
-// function addResetListener(){
-//   console.log("clear");
-//    document.getElementById("reset").addEventListener("click", resetBoard);
-//     }
-    
- // function resetBoard(){
- //  console.log("clear");
- //   // Looping through all boxes and removing the HTML and css class
-    // for(var i = columns.length -1; i >= 0; i--){
-    //   columns[i].innerHTML = "";
-    //   columns[i].setAttribute("class", "clear");
-    //  }
-
-  // resetBoard();
-
-
 
 
 
