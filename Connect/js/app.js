@@ -5,18 +5,8 @@ window.onload = function() {
   var buttons = document.getElementsByTagName("button")
 
   for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", takeTurn)
-  };
-
-  // var testColumns = [
-  //   ["red", "blue", "blue", "blue"],
-  //   ["blue", "red", "blue", "blue"],
-  //   ["blue", "blue", "red", "blue"],
-  //   ["blue", "blue", "blue", "red"],
-  //   []
-  // ];
-
-  // checkDiagonal();
+    buttons[i].addEventListener("click", takeTurn);
+  }
 
   function takeTurn() {
     // var chuteIndex = parseInt(prompt("choose chute"));
@@ -27,10 +17,10 @@ window.onload = function() {
     //the array needs to be transformed into a jquery object, reversed and decremented (rather than incremented) in order to get the pieces to move up the column from the bottom
     var cell = $(row).find("td")[chuteIndex];
     $(cell).addClass(player);
-     //now we change the player
-     checkWin();
+    //now we change the player
+    checkWin();
 
-     player = (player == "red") ? "blue" : "red";
+    player = (player == "red") ? "blue" : "red";
    }
 
    function checkColumn(){
@@ -57,8 +47,7 @@ window.onload = function() {
     sameColorSuite = 1;
     for(var i = 0; i < 5; i++){
       for(var j = 0; j < 5; j++){
-        var currentCell = columns[j][i];
-        
+        var currentCell = columns[j][i];     
         if(currentCell === player){
           if(sameColorSuite >= 4){
             return true;
