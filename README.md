@@ -1,20 +1,13 @@
 Synopsis
 
-The project is a two player game based on Connect 4. To win the game you must get 4 in a row of the same colour, either horizontally or vertically. 
+The project is a classic two player 4-in-a-row game. To win the game you must get 4 in a row of the same colour, either horizontally or vertically. 
 
 
-Code Example
+Code Stuff
 
-Using basic HTML, CSS, Javascript, JQuery and Google fonts libraries.
+It was built using basic Javascript, JQuery, HTML, CSS and Google fonts libraries.
 
 
 Motivation
-A first project in a Web Development Immersive course. The project demonstrates my application of javascript, html, css and jquery.
 
-
-Installation
-Provide code examples and explanations of how to get the project.
-
-
-Contributors
-Github for any new features, bug testing or improvements.
+This is my first project in a Web Development Immersive course. It was a great opportunity to apply my javascript learning as well as play around with html and css. 
