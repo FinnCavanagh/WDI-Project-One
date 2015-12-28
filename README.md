@@ -1,8 +1,10 @@
 Synopsis
+
 The project is a two player game based on Connect 4. To win the game you must get 4 in a row of the same colour, either horizontally or vertically. 
 
 
 Code Example
+
 Using basic HTML, CSS, Javascript, JQuery and Google fonts libraries.
 
 
